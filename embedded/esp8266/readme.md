@@ -6,6 +6,7 @@ Ce document est une amélioration et un complément du document [ESP8266 WiFi Sh
 ## Table des matières
 - [Makerfabs ESP8266 WiFi Shield](#makerfabs-esp8266-wifi-shield)
   - [Table des matières](#table-des-matières)
+- [Firmware compatible pour le cours](#firmware-compatible-pour-le-cours)
 - [Configuration avec Arduino IDE](#configuration-avec-arduino-ide)
 - [Arduino Mega](#arduino-mega)
   - [Branchement au RX1/TX1](#branchement-au-rx1tx1)
@@ -21,6 +22,9 @@ Ce document est une amélioration et un complément du document [ESP8266 WiFi Sh
 - [Extra](#extra)
   - [](#)
 - [Références](#références)
+
+# Firmware compatible pour le cours
+- [Fichier avec des firmwares compatibles](from_instructables.zip)
 
 
 # Configuration avec Arduino IDE
