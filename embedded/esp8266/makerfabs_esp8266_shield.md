@@ -349,12 +349,17 @@ Il suffit de lancer l'application et de suivre les étapes suivantes :
 4. S'assurer que GPIO0 est sur GND
 5. Toucher rapidement la broche `RST` avec le ground pour mettre le module en mode flash
    ![Alt text](rst_pin.gif)
+   
    On ne voit pas dans la vidéo, mais la DEL bleu du module s'allume très brièvement.
 6. S'assurer que rien n'est coché dans la liste des fichiers
+
    ![Alt text](flash_download_tool_v3.8.5_C.png)
+   
 7. Cliquer sur `Start`
    Après avoir sur `Start`, l'application cherchera et affichera les informations du module
+   
    ![Alt text](flash_download_tool_v3.8.5_D.png)
+   
 8. Récupérer le firmware téléchargé dans la source de l'article original
 9. Ajouter le firmware à fin de la liste des fichiers
 10. Mettre l'adresse de début à `0x00000`
