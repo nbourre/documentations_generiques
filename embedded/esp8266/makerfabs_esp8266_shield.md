@@ -12,11 +12,12 @@ Ce document est une amélioration et un complément du document [ESP8266 WiFi Sh
   - [Code d'exemple](#code-dexemple)
 - [Mise à jour du firmware](#mise-à-jour-du-firmware)
 - [Connexion au module ESP8266](#connexion-au-module-esp8266)
+- [Mise à jour du firmware avec ESP8266 Download Tool v3.8.5](#mise-à-jour-du-firmware-avec-esp8266-download-tool-v385)
+- [Mise à jour du firmware avec esptool.py](#mise-à-jour-du-firmware-avec-esptoolpy)
   - [Installation de l'outil esptool.py](#installation-de-loutil-esptoolpy)
   - [Sauvegarde du firmware](#sauvegarde-du-firmware)
   - [Effacement du firmware](#effacement-du-firmware)
-  - [Option 1 : Téléversement du firmware avec `esptool.py`](#option-1--téléversement-du-firmware-avec-esptoolpy)
-  - [Option 2 : Téléversement du firmware avec ESP8266 Download Tool v3.8.5](#option-2--téléversement-du-firmware-avec-esp8266-download-tool-v385)
+  - [Téléversement du firmware](#téléversement-du-firmware)
 - [Extra](#extra)
   - [](#)
 - [Références](#références)
@@ -221,6 +222,48 @@ Il faudra aussi brancher le port **GPIO0 sur GND** pour que le module entre en m
 
 ![Alt text](branchement_gpio0.jpg)
 
+# Mise à jour du firmware avec ESP8266 Download Tool v3.8.5
+[Source de l'article original](https://www.makerfabs.cc/article/esp8266-wifi-shield-firmware-upgrade-v1-0.html)
+
+Vous pouvez aussi utiliser l'outil **ESP8266 Download Tool**. Dans le cas présent, nous avons utilisé la version 3.8.5  pour téléverser le firmware.
+
+> **Note :** Avant d'effectuer la mise à jour, il est fortement recommandé de sauvegarder le firmware actuel. Pour cela, vous pouvez vous référer à la partie [Mise à jour du firmware avec esptool.py](#mise-à-jour-du-firmware-avec-esptoolpy)
+
+Il suffit de lancer l'application et de suivre les étapes suivantes :
+
+![Alt text](flash_download_tool_v3.8.5_A.png)
+
+1. Cliquer sur `Developer Mode`
+2. Cliquer sur `ESP8266 DownloadTool`
+   ![Alt text](flash_download_tool_v3.8.5_B.png)
+3. Sélectionner le port COM de votre module
+4. S'assurer que GPIO0 est sur GND
+5. Toucher rapidement la broche `RST` avec le ground pour mettre le module en mode flash
+
+![Alt text](rst_pin.gif)
+   On ne voit pas dans la vidéo, mais la DEL bleu du module s'allume très brièvement.
+6. S'assurer que rien n'est coché dans la liste des fichiers
+
+![Alt text](flash_download_tool_v3.8.5_C.png)
+   
+7. Cliquer sur `Start`
+   Après avoir sur `Start`, l'application cherchera et affichera les informations du module
+   
+![Alt text](flash_download_tool_v3.8.5_D.png)
+   
+8. Récupérer le firmware téléchargé dans la source de l'article original
+9. Ajouter le firmware à fin de la liste des fichiers
+10. Mettre l'adresse de début à `0x00000`
+11. Cocher la case devant le fichier
+12. Sélectionner les mêmes options que dans les captures d'écran
+13. Appuyer sur `Start`
+    1.  Le téléversement du firmware peut prendre plusieurs minutes. Une fois terminé, vous devriez avoir un message comme celui-ci :
+        `is stub and send flash finish`
+
+Pour tester le module, vous n'avez qu'à suivre les étapes de la section [Configuration avec Arduino IDE](#configuration-avec-arduino-ide).
+
+# Mise à jour du firmware avec esptool.py
+
 ## Installation de l'outil esptool.py
 Avant de modifier le firmware, il faut le sauvegarder. Pour ce faire, nous avons beesoin de l'outil `esptool.py` qui est disponible [ici](https://github.com/espressif/esptool). Il suffit de télécharger ou cloner le dépôt et de lancer la commande suivante :
 
@@ -316,7 +359,7 @@ Chip erase completed successfully in 12.9s
 Hard resetting via RTS pin...
 ```
 
-## Option 1 : Téléversement du firmware avec `esptool.py`
+## Téléversement du firmware
 Après avoir faites toutes les étapes précédentes, on peut passer au téléversement du firmware. Pour cela, il faut lancer la commande suivante :
 
 Pour un module de 4MB :
@@ -333,43 +376,7 @@ python esptool.py --port COM3 write_flash -fs 2MB -fm dout 0x0 nouveauFirmware.b
 - La taille du firmware dépend de la taille de votre module. Si vous avez un module de 1MB, il faut utiliser la commande pour un module de 1MB.
 - *nouveauFirmware.bin* est le chemin vers le fichier du firmware.
 
-## Option 2 : Téléversement du firmware avec ESP8266 Download Tool v3.8.5
-[Source de l'article original](https://www.makerfabs.cc/article/esp8266-wifi-shield-firmware-upgrade-v1-0.html)
 
-Vous pouvez aussi utiliser l'outil **ESP8266 Download Tool**. Dans le cas présent, nous avons utilisé la version 3.8.5  pour téléverser le firmware.
-
-Il suffit de lancer l'application et de suivre les étapes suivantes :
-
-![Alt text](flash_download_tool_v3.8.5_A.png)
-
-1. Cliquer sur `Developer Mode`
-2. Cliquer sur `ESP8266 DownloadTool`
-   ![Alt text](flash_download_tool_v3.8.5_B.png)
-3. Sélectionner le port COM de votre module
-4. S'assurer que GPIO0 est sur GND
-5. Toucher rapidement la broche `RST` avec le ground pour mettre le module en mode flash
-
-![Alt text](rst_pin.gif)
-   On ne voit pas dans la vidéo, mais la DEL bleu du module s'allume très brièvement.
-6. S'assurer que rien n'est coché dans la liste des fichiers
-
-![Alt text](flash_download_tool_v3.8.5_C.png)
-   
-7. Cliquer sur `Start`
-   Après avoir sur `Start`, l'application cherchera et affichera les informations du module
-   
-![Alt text](flash_download_tool_v3.8.5_D.png)
-   
-8. Récupérer le firmware téléchargé dans la source de l'article original
-9. Ajouter le firmware à fin de la liste des fichiers
-10. Mettre l'adresse de début à `0x00000`
-11. Cocher la case devant le fichier
-12. Sélectionner les mêmes options que dans les captures d'écran
-13. Appuyer sur `Start`
-    1.  Le téléversement du firmware peut prendre plusieurs minutes. Une fois terminé, vous devriez avoir un message comme celui-ci :
-        `is stub and send flash finish`
-
-Pour tester le module, vous n'avez qu'à suivre les étapes de la section [Configuration avec Arduino IDE](#configuration-avec-arduino-ide).
 
 # Extra
 - Gabarit 3D à imprimer pour protéger les broches et n'exposer que GPIO0 et RST. 
