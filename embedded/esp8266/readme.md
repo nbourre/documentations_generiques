@@ -380,7 +380,13 @@ python esptool.py --port COM3 write_flash -fs 2MB -fm dout 0x0 nouveauFirmware.b
 - La taille du firmware dépend de la taille de votre module. Si vous avez un module de 1MB, il faut utiliser la commande pour un module de 1MB.
 - *nouveauFirmware.bin* est le chemin vers le fichier du firmware.
 
+---
 
+# Tester le module avec Arduino
+
+TODO : Ajouter les informations pour tester le module avec le terminal
+
+---
 
 # Extra
 - Gabarit 3D à imprimer pour protéger les broches et n'exposer que GPIO0 et RST. 
