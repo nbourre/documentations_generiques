@@ -6,14 +6,14 @@ Ces documents sont des trucs et astuces pour la programmation en générale. Il 
   - [C++](#c)
   - [Arduino](#arduino)
 
-
-
 # Liste de vérifications générales pour la programmation
 Voici une liste de vérifications pour t’aider à réviser ton code
 - Tu utilises des variables ou constantes et non des valeurs numériques directement.
   - Par exemples, on utilise des constantes pour les numéros de broches ou des variables pour les limites.
 - Tu utilises des noms de variable et fonction significatifs.
   - Exemples invalides : « `lastTime1`, `lastTime2`, etc. »
+- Tes variables n'ont pas d'accent ou d'autres caractères spéciaux.
+  - Les seuls caractères acceptés sont les lettres, les chiffres et le caractère souligné « `_` ».
 - Tu as mis des commentaires pertinents.
 - Ton code est indenté pour faciliter la lecture de celui-ci
 
