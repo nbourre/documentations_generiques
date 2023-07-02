@@ -23,3 +23,11 @@
   - ![Alt text](fusion_convert_mesh.png)
 - Si c'est la version éducative (Pro), vous pouvez sélectionner la méthode "Prismatic". Cela convertira l'objet en corps
 - Cliquer sur "Ok"
+
+## Fusionner les surfaces
+- Désactiver la capture de l'historique
+  - Clic droit sur `document settings`
+  - ![Alt text](fusion_design_history_disable.png)
+- Sous l'onglet "Surface", sous le menu "Modify", sélectionner "Merge"
+- Sélectionner les faces d'un coté
+- Cliquer sur "Ok"
