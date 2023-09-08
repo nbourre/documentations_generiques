@@ -12,6 +12,7 @@
 - [Gestion des utilisateurs](#gestion-des-utilisateurs)
   - [Sauvegarder les données des étudiants](#sauvegarder-les-données-des-étudiants)
   - [Désinscrire les étudiants en lot](#désinscrire-les-étudiants-en-lot)
+- [Intégrer une page web dans Moodle](#intégrer-une-page-web-dans-moodle)
 
 
 # Évaluation, Quiz et Test
@@ -89,5 +90,20 @@ Dans l'installation actuel au Cégep, il semble y avoir un bogue avec l'option d
 4. Supprimer la méthode d'inscription.
    - **Attention!** Cette action va désinscrire tous les utilisateurs du cours qui ont été inscrits par cette méthode.
 
+# Intégrer une page web dans Moodle
+Il est possible d'héberger un site web au sein de Moodle en suivant les instructions suivantes :
 
+1. Assurez-vous que tous les liens de vos pages web sont relatifs les uns aux autres. Cela signifie que si vous avez une page index.html et une page book.html dans le même répertoire, pour faire un lien vers la page book.html à partir de la page index, vous avez “/book.html”. Les liens ne fonctionneront pas correctement sinon.
+2. Compressez le répertoire racine du site en un seul fichier zip.
+3. Allez au cours Moodle et sélectionnez le bouton "Mode Édition" en haut à droite pour commencer à éditer le site du cours.
+4. Choisissez le Bloc des Sujets où vous souhaitez ajouter le devoir et cliquez sur Ajouter une activité ou une ressource.
+5. Sélectionnez l'activité "Fichier" dans le sélecteur d'activités.
+6. Ajoutez le fichier zip comme le fichier pour cette ressource.
+7. Sélectionnez le fichier zip dans le sélecteur de fichiers, et une fenêtre contextuelle apparaîtra. Choisissez "Décompresser", un dossier apparaîtra dans le sélecteur de fichiers.
+8. Naviguez dans le dossier et sélectionnez votre page “index”. Une fois sélectionnée, choisissez l'option "Spécifier comme fichier principal" depuis la fenêtre contextuelle.
+9. Sous l'option de ressource "Apparence", il y a plusieurs options d'affichage qui vous permettent de définir la page web pour qu'elle soit intégrée au site, s'ouvre dans une pop-up, etc.
+
+> **Note :** Les fichiers individuels peuvent être mis à jour une fois ce processus terminé, vous n'aurez donc pas besoin de télécharger à nouveau le fichier zip complet chaque fois qu'un changement est nécessaire.
+
+Source : https://help.lafayette.edu/importing-a-website-into-moodle/
 
