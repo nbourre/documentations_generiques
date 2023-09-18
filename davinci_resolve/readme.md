@@ -10,6 +10,7 @@
   - [Ajouter un gif](#ajouter-un-gif)
   - [Faire un fade in/out](#faire-un-fade-inout)
   - [Sélectionner les clips à droite du marqueur](#sélectionner-les-clips-à-droite-du-marqueur)
+  - [Changer la vitesse d'une séquence](#changer-la-vitesse-dune-séquence)
 - [Références](#références)
 
 # Workflow
@@ -52,6 +53,12 @@
 
 ## Sélectionner les clips à droite du marqueur
 - ALT + Y 
+
+## Changer la vitesse d'une séquence
+1. Sélectionner la séquence
+2. Cliquer droit sur la séquence
+3. Sélectionner "Retime controls"
+4. Modifier le pourcentage de vitesse désiré
 
 # Références
 - https://www.mnn.org/blog/create-reusable-lower-third-template-davinci-resolve
