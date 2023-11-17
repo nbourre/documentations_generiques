@@ -11,4 +11,4 @@ Progression est une plateforme de pratique de la programmation compatible avec p
 Voir le [lien suivant](https://progression.pages.dti.crosemont.quebec/documentation/contenu/cr%C3%A9action_de_conteu.html)
 
 - Format des fichiers de question : YAML
-- 
+- [Structure de contenu](https://progression.pages.dti.crosemont.quebec/documentation/contenu/structure_exercice.html)
