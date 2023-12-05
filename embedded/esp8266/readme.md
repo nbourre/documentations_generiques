@@ -19,6 +19,7 @@ Ce document est une amélioration et un complément du document [ESP8266 WiFi Sh
   - [Sauvegarde du firmware](#sauvegarde-du-firmware)
   - [Effacement du firmware](#effacement-du-firmware)
   - [Téléversement du firmware](#téléversement-du-firmware)
+- [Tester le module avec Arduino](#tester-le-module-avec-arduino)
 - [Extra](#extra)
   - [](#)
 - [Références](#références)
@@ -32,7 +33,7 @@ Ce document est une amélioration et un complément du document [ESP8266 WiFi Sh
    - Vous pouvez téléverser un code vide ou l'exemple `Blink`.
 2. Empilez le shield sur le dessus de l'Arduino.
 3. Vérifiez que le cavalier sur le shield correspond à la broche RX/TX de l'Arduino (TX-TX et RX-RX).
-   - Il faut que le cavalier ESP_TX soit relié à la broche TX de l'Arduino et ESP_RX soit relié à la broche RX de l'Arduino. **Ce n'est pas une erreur**, il pour que la communication via le USB se fasse directement au shield.
+   - Il faut que le cavalier ESP_TX soit relié à la broche TX de l'Arduino et ESP_RX soit relié à la broche RX de l'Arduino. **Ce n'est pas une erreur**, il le faut pour que la communication via le USB se fasse directement au shield. L'Arduino ne sert que de support pour l'électricité à ce point.
    - Généralement, il s'agit des broches 0 et 1 de l'Arduino.
 4. Ouvrez l'IDE Arduino.
 5. Obtenez la bibliothèque `WiFiEsp` en allant dans le gestionnaire de bibliothèques.
