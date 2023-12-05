@@ -23,6 +23,11 @@
    - [Source](https://docs.moodle.org/401/en/Gift_with_medias_format) dans la section « Tips »
 3. Compresser le dossier avec le fichier « .gift » ainsi que le dossier des images
 
+### Insérer des images dans un test GIFT
+1. Créer un dossier « img »
+2. Mettre les images à l’intérieur.
+3. Utiliser la balise `<img src\="@@PLUGINFILE@@/img/fichier" /><br/>`
+
 Voici un exemple de fichier GIFT avec médias :
 ```gift
 $CATEGORY: Référence
@@ -43,11 +48,6 @@ Considérez le code suivant<br/>
 <img src\="@@PLUGINFILE@@/img/question_prog_b.png" /><br/>
 Décrivez ce que fait le code. {}
 ```
-
-### Insérer des images dans un test GIFT
-1. Créer un dossier « img »
-2. Mettre les images à l’intérieur.
-3. Utiliser la balise `<img src\="@@PLUGINFILE@@/img/fichier" /><br/>`
 
 ### Pour catégoriser les questions
 - Ajouter la ligne « $CATEGORIE: NomExamen/catégorie/sous-catégorie… » entre chaque catégorie de questions.
