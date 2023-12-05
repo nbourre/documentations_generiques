@@ -23,6 +23,27 @@
    - [Source](https://docs.moodle.org/401/en/Gift_with_medias_format) dans la section « Tips »
 3. Compresser le dossier avec le fichier « .gift » ainsi que le dossier des images
 
+Voici un exemple de fichier GIFT avec médias :
+```gift
+$CATEGORY: Référence
+
+::Référence::  <img src\="@@PLUGINFILE@@/img/auriga_pinout.png" /><br/>
+
+$CATEGORY: Terminal/Analyse de code
+
+::Analyse de code::
+[markdown]
+Considérez le code suivant<br/>
+<img src\="@@PLUGINFILE@@/img/question_prog_a.png" /><br/>
+Décrivez ce que fait le code. {}
+
+::Analyse de code::
+[markdown]
+Considérez le code suivant<br/>
+<img src\="@@PLUGINFILE@@/img/question_prog_b.png" /><br/>
+Décrivez ce que fait le code. {}
+```
+
 ### Insérer des images dans un test GIFT
 1. Créer un dossier « img »
 2. Mettre les images à l’intérieur.
