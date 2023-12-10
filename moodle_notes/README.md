@@ -28,6 +28,27 @@
 2. Mettre les images à l’intérieur.
 3. Utiliser la balise `<img src\="@@PLUGINFILE@@/img/fichier" /><br/>`
 
+Voici un exemple de fichier GIFT avec médias :
+```gift
+$CATEGORY: Référence
+
+::Référence::  <img src\="@@PLUGINFILE@@/img/auriga_pinout.png" /><br/>
+
+$CATEGORY: Terminal/Analyse de code
+
+::Analyse de code::
+[markdown]
+Considérez le code suivant<br/>
+<img src\="@@PLUGINFILE@@/img/question_prog_a.png" /><br/>
+Décrivez ce que fait le code. {}
+
+::Analyse de code::
+[markdown]
+Considérez le code suivant<br/>
+<img src\="@@PLUGINFILE@@/img/question_prog_b.png" /><br/>
+Décrivez ce que fait le code. {}
+```
+
 ### Pour catégoriser les questions
 - Ajouter la ligne « $CATEGORIE: NomExamen/catégorie/sous-catégorie… » entre chaque catégorie de questions.
 
