@@ -21,7 +21,7 @@ Voici une liste de vérifications pour t’aider à réviser ton code
 - La portée des variables est adéquates, i.e. éviter des variables globales si ce n’est pas nécessaires.
   - Par exemple, utilise une variable statique si celle-ci n’est pas nécessaire à l’extérieur de la fonction, mais qui doit être gardé en mémoire à chaque appelle
   - `lastTime` ou `previousMillis` sont de bon exemple où l'on pourrait utiliser une variable statique à l'intérieur d'une fonction.
-- Tu as mis « #pragma once » à la première ligne de chacun de tes « .h ». On appelle cela un « header guard »
+- Tu as mis `#pragma once` à la première ligne de chacun de tes « .h ». On appelle cela un « header guard ». Cela permet d’éviter les problèmes de double inclusion.
   - L’alternative c’est de faire ce code
     ```cpp
     #ifndef _NOMCLASSE_H_
@@ -32,11 +32,10 @@ Voici une liste de vérifications pour t’aider à réviser ton code
 
 
 ## Arduino
-- Ta boucle est simple à comprendre et appelles des fonctions ou méthodes.
-- Tu n’as pas utilisé la fonction `delay()` dans le code de la boucle.
-  - L’appel de `delay()` est acceptable dans la configuration.
+- Ta boucle est simple à comprendre et appelle des fonctions ou méthodes.
+- Tu n’as pas utilisé la fonction `delay()` (ou equivalent) dans le code de la boucle.
+  - Je n'accepte les appels de `delay()` que dans la configuration.
 - Tu utilises des tâches ou état pour gérer ton code.
-
 - Ton code est indenté pour faciliter la lecture de celui-ci
   - Dans l’éditeur Arduino, tu peux aller dans le menu « Édition » et faire « Autoformater ».
   Touches raccourcis : <kbd>CTRL</kbd> + <kbd>T</kbd>
