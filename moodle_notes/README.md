@@ -6,6 +6,7 @@
     - [Pour catégoriser les questions](#pour-catégoriser-les-questions)
   - [Importer les questions GIFT dans Moodle](#importer-les-questions-gift-dans-moodle)
   - [Créer un test sur Moodle](#créer-un-test-sur-moodle)
+  - [Dupliquer un test sur Moodle](#dupliquer-un-test-sur-moodle)
   - [Ajouter des questions au test](#ajouter-des-questions-au-test)
   - [Correction des évaluations](#correction-des-évaluations)
     - [Correction manuelle](#correction-manuelle)
@@ -69,6 +70,12 @@ Décrivez ce que fait le code. {}
   - [Optionnel] : Marquer le temps disponible
 - Marquer le nombre de tentatives que les étudiants peuvent faire
   - 1 généralement
+
+## Dupliquer un test sur Moodle
+- Dans la page principale du cours
+- Aller au Quiz à dupliquer
+- Cliquer sur les trois points à droite du Quiz
+- Cliquer sur « Copier »
 
 ## Ajouter des questions au test
 1. Dans le test, atteindre la section « Questions ».
