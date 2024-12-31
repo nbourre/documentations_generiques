@@ -9,6 +9,7 @@
 - [Astuces rapides](#astuces-rapides)
   - [Ajouter un gif](#ajouter-un-gif)
   - [Faire un fade in/out](#faire-un-fade-inout)
+  - [Ajouter un texte](#ajouter-un-texte)
   - [Sélectionner les clips à droite du marqueur](#sélectionner-les-clips-à-droite-du-marqueur)
   - [Changer la vitesse d'une séquence](#changer-la-vitesse-dune-séquence)
 - [Références](#références)
@@ -50,6 +51,12 @@
 5. Relâcher la souris
 
 ![Alt text](dr_fade_in.gif)
+
+## Ajouter un texte
+Pour ajouter un texte rapide pour, par exemple, un correctif, on peut utiliser le "Text" de Fusion.
+1. Dans "Effets->Toolbox->Titles", sélectionner "Text"
+2. Glisser le "Text" dans la timeline "Video 2"
+3. Modifier le texte dans le "Inspector" (Haut droit)
 
 ## Sélectionner les clips à droite du marqueur
 - ALT + Y 
