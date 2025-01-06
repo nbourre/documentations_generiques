@@ -9,6 +9,7 @@
 - [Astuces rapides](#astuces-rapides)
   - [Ajouter un gif](#ajouter-un-gif)
   - [Faire un fade in/out](#faire-un-fade-inout)
+  - [Faire une transition](#faire-une-transition)
   - [Ajouter un texte](#ajouter-un-texte)
   - [Sélectionner les clips à droite du marqueur](#sélectionner-les-clips-à-droite-du-marqueur)
   - [Changer la vitesse d'une séquence](#changer-la-vitesse-dune-séquence)
@@ -51,6 +52,13 @@
 5. Relâcher la souris
 
 ![Alt text](dr_fade_in.gif)
+
+## Faire une transition
+1. Sélectionner le 2e clip
+2. Le faire "overlap" en le glissant sur le 1er clip
+3. Dans les "effects", sélectionner "Video transitions"
+4. Sélectionner la transition désirée
+5. Glisser la transition entre les 2 clips (Zone de "overlap")
 
 ## Ajouter un texte
 Pour ajouter un texte rapide pour, par exemple, un correctif, on peut utiliser le "Text" de Fusion.
