@@ -198,7 +198,8 @@ Cette structure permet une grande flexibilité et facilite le travail collaborat
 ![text](assets/VirtualBoxVM_gT4jflTExG.apng)
 
 3. Afficher le contenu de la clé publique SSH
-   1. `cat ~/.ssh/id_ed25519.pub`
+   1. `notepad .ssh/id_ed25519.pub`
+   2. Copier le contenu du fichier
 4. Ajouter la clé publique SSH à GitHub
    1. Atteindre : https://github.com/settings/keys
    2. Cliquer sur "New SSH key"
