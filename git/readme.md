@@ -195,7 +195,7 @@ Cette structure permet une grande flexibilité et facilite le travail collaborat
    1. `eval "$(ssh-agent -s)"`
    2. `ssh-add ~/.ssh/id_ed25519`
 
-[text](assets/VirtualBoxVM_gT4jflTExG.apng)
+![text](assets/VirtualBoxVM_gT4jflTExG.apng)
 
 3. Afficher le contenu de la clé publique SSH
    1. `cat ~/.ssh/id_ed25519.pub`
