@@ -205,5 +205,6 @@ Cette structure permet une grande flexibilité et facilite le travail collaborat
    2. Cliquer sur "New SSH key"
    3. Donner un nom à la clé
    4. Coller le contenu de la clé publique
-5. Pousser le contenu du dépôt local vers GitHub
+5. Taper la ligne `git remote set-url origin git@github.com:USERNAME/REPOSITORY.git` dans le dossier du depot.
+
 
