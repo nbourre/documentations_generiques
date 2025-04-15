@@ -25,7 +25,7 @@ Ce document est une amélioration et un complément du document [ESP8266 WiFi Sh
 - [Références](#références)
 
 # Firmware compatible pour le cours
-- [Fichier avec des firmwares compatibles](from_instructables.zip)
+- [Fichier avec des firmwares compatibles](assets/from_instructables.zip)
 
 
 # Configuration avec Arduino IDE
@@ -70,7 +70,7 @@ Ce document est une amélioration et un complément du document [ESP8266 WiFi Sh
 
 - Désactiver les cavaliers en les plaçant en parallèle (voir image ci-dessous).
 
-![Alt text](makerfabs_wifi_mega.jpg)
+![Alt text](assets/makerfabs_wifi_mega.jpg)
 - Brancher le RX du shield sur la broche TX1 de l'Arduino Mega.
 - Brancher le TX du shield sur la broche RX1 de l'Arduino Mega.
 
@@ -208,7 +208,7 @@ Attention! Cette partie est très dangereuse. Si vous ne savez pas ce que vous f
 # Connexion au module ESP8266
 Si vous avez un module qui n'a pas de port USB, vous devez utiliser un adaptateur USB-UART. Vous pouvez en trouver sur [Amazon](https://a.co/d/1gRKGrE).
 
-![Alt text](usb_uart.jpg)
+![Alt text](assets/usb_uart.jpg)
 
 Pour le branchement, il faut relier les broches suivantes :
 
@@ -223,9 +223,9 @@ Pour le branchement, il faut relier les broches suivantes :
 
 Il faudra aussi brancher le port **GPIO0 sur GND** pour que le module entre en mode flash. Pour cela, vous pouvez utiliser un jumper ou un bouton relié à la masse.
 
-![Alt text](ESP8266-ESP-12E-chip-pinout-gpio-pin.webp)
+![Alt text](assets/ESP8266-ESP-12E-chip-pinout-gpio-pin.webp)
 
-![Alt text](branchement_gpio0.jpg)
+![Alt text](assets/branchement_gpio0.jpg)
 
 # Mise à jour du firmware avec ESP8266 Download Tool v3.8.5
 [Source de l'article original](https://www.makerfabs.cc/article/esp8266-wifi-shield-firmware-upgrade-v1-0.html)
@@ -236,25 +236,25 @@ Vous pouvez aussi utiliser l'outil **ESP8266 Download Tool**. Dans le cas prése
 
 Il suffit de lancer l'application et de suivre les étapes suivantes :
 
-![Alt text](flash_download_tool_v3.8.5_A.png)
+![Alt text](assets/flash_download_tool_v3.8.5_A.png)
 
 1. Cliquer sur `Developer Mode`
 2. Cliquer sur `ESP8266 DownloadTool`
-   ![Alt text](flash_download_tool_v3.8.5_B.png)
+   ![Alt text](assets/flash_download_tool_v3.8.5_B.png)
 3. Sélectionner le port COM de votre module
 4. S'assurer que GPIO0 est sur GND
 5. Toucher rapidement la broche `RST` avec le ground pour mettre le module en mode flash
 
-![Alt text](rst_pin.gif)
+![Alt text](assets/rst_pin.gif)
    On ne voit pas dans la vidéo, mais la DEL bleu du module s'allume très brièvement.
 6. S'assurer que rien n'est coché dans la liste des fichiers
 
-![Alt text](flash_download_tool_v3.8.5_C.png)
+![Alt text](assets/flash_download_tool_v3.8.5_C.png)
    
 7. Cliquer sur `Start`
    Après avoir sur `Start`, l'application cherchera et affichera les informations du module
    
-![Alt text](flash_download_tool_v3.8.5_D.png)
+![Alt text](assets/flash_download_tool_v3.8.5_D.png)
    
 8. Récupérer le firmware téléchargé dans la source de l'article original
 9. Ajouter le firmware à fin de la liste des fichiers
@@ -391,9 +391,9 @@ TODO : Ajouter les informations pour tester le module avec le terminal
 
 # Extra
 - Gabarit 3D à imprimer pour protéger les broches et n'exposer que GPIO0 et RST. 
-[Fichier STL](esp-12f%20flashing%20frame.stl)
+[Fichier STL](assets/esp-12f%20flashing%20frame.stl)
 
-![Alt text](esp8266_flashing_frame.jpg)
+![Alt text](assets/esp8266_flashing_frame.jpg)
 ---
 
 # Références
