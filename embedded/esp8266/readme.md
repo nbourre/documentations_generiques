@@ -10,6 +10,7 @@ Ce document est une amélioration et un complément du document [ESP8266 WiFi Sh
 - [Configuration avec Arduino IDE](#configuration-avec-arduino-ide)
 - [Arduino Mega](#arduino-mega)
   - [Branchement au RX1/TX1](#branchement-au-rx1tx1)
+  - [Code pour tester la compatibilité](#code-pour-tester-la-compatibilité)
   - [Code d'exemple](#code-dexemple)
 - [Mise à jour du firmware](#mise-à-jour-du-firmware)
 - [Connexion au module ESP8266](#connexion-au-module-esp8266)
@@ -21,12 +22,12 @@ Ce document est une amélioration et un complément du document [ESP8266 WiFi Sh
   - [Téléversement du firmware](#téléversement-du-firmware)
 - [Tester le module avec Arduino](#tester-le-module-avec-arduino)
 - [Extra](#extra)
-  - [](#)
 - [Références](#références)
 
 # Firmware compatible pour le cours
 - [Fichier avec des firmwares compatibles](assets/from_instructables.zip)
 
+---
 
 # Configuration avec Arduino IDE
 1. Assurez-vous qu'il n'y a pas de code en cours d'exécution sur l'Arduino.
@@ -74,108 +75,235 @@ Ce document est une amélioration et un complément du document [ESP8266 WiFi Sh
 - Brancher le RX du shield sur la broche TX1 de l'Arduino Mega.
 - Brancher le TX du shield sur la broche RX1 de l'Arduino Mega.
 
-## Code d'exemple
+---
+
+## Code pour tester la compatibilité
+Voici l'exemple de code `CheckFirmware` de la librairie `WifiEspAT`. Il permet de valider la compatibilité du module `ESP8266` avec la librairie `WiFiEspAT`. Il faudra ouvrir le moniteur série de Arduino IDE à 115200 bauds pour voir le résultat.
 
 ```cpp
-/*
- WiFiEsp example: WebClient
 
- This sketch connects to google website using an ESP8266 module to
- perform a simple web search.
+#include <WiFiEspAT.h>
 
- For more details see: http://yaab-arduino.blogspot.com/p/wifiesp-example-client.html
-*/
 
-#include "WiFiEsp.h"
+#define AT_BAUD_RATE 115200
 
-char ssid[] = "ssid";            // your network SSID (name)
-char pass[] = "ssid_pw";        // your network password
-int status = WL_IDLE_STATUS;     // the Wifi radio's status
+void setup() {
 
-char server[] = "arduino.cc";
+  Serial.begin(115200);
+  while (!Serial);
 
-// Initialize the Ethernet client object
-WiFiEspClient client;
+  Serial1.begin(AT_BAUD_RATE);
+  WiFi.init(Serial1);
 
-void setup()
-{
-  // initialize serial for debugging
-  Serial.begin(9600);
-  // initialize serial for ESP module
-  Serial1.begin(9600);
-  // initialize ESP module
-  WiFi.init(&Serial1);
-
-  // check for the presence of the shield
-  if (WiFi.status() == WL_NO_SHIELD) {
-    Serial.println("WiFi shield not present");
+  if (WiFi.status() == WL_NO_MODULE) {
+    Serial.println("Communication with WiFi module failed!");
     // don't continue
     while (true);
   }
 
-  // attempt to connect to WiFi network
-  while ( status != WL_CONNECTED) {
-    Serial.print("Attempting to connect to WPA SSID: ");
-    Serial.println(ssid);
-    // Connect to WPA/WPA2 network
-    status = WiFi.begin(ssid, pass);
+  char ver[10];
+  int major = 0;
+  int minor = 0;
+  if (WiFi.firmwareVersion(ver)) {
+    Serial.print("AT firmware version ");
+    Serial.println(ver);
+    char* tok = strtok(ver, ".");
+    major = atoi(tok);
+    tok = strtok(NULL, ".");
+    minor = atoi(tok);
+    if (major == 2 && minor == 0) {
+      Serial.println("AT firmware version 2.0 doesn't support passive receive mode and can't be used with the WiFiEspAt library");
+    } else if (major < 1 || (major == 1 && minor < 7)) {
+      Serial.println("WiWiEspAT library requires at least version 1.7.0 of AT firmware (but not 2.0)");
+    } else {
+      Serial.println("AT firmware is OK for the WiFiEspAT library.");
+#ifdef WIFIESPAT1
+      if (major > 1) {
+        Serial.println("For AT firmware version 2 comment out #define WIFIESPAT1 in EspAtDrvTypes.h");
+      }
+#else
+      if (major == 1) {
+        Serial.println("For AT firmware version 1 add #define WIFIESPAT1 in EspAtDrvTypes.h");
+      }
+#endif
+    }
+  } else {
+    Serial.println("Error getting AT firmware version");
   }
 
-  // you're connected now, so print out the data
-  Serial.println("You're connected to the network");
-  
-  printWifiStatus();
+
+}
+
+void loop() {
+}
+```
+
+---
+
+## Code d'exemple
+
+Voici un code d'exemple qui devrait permettre au Arduino Mega de se connecter à un réseau WiFi. 
+
+```cpp
+#include <WiFiEspAT.h>
+
+// Mettre à 1 si le fichier arduino_secrets.h est présent
+#define HAS_SECRETS 0  
+
+#if HAS_SECRETS
+#include "arduino_secrets.h"
+/////// SVP par soucis de sécurité, mettez vos informations dans le fichier arduino_secrets.h
+
+// Nom et mot de passe du réseau wifi
+const char ssid[] = SECRET_SSID;
+const char pass[] = SECRET_PASS;
+
+#else
+const char ssid[] = "ton_ssid";  // your network SSID (name)
+const char pass[] = "ton_mot_de_passe";  // your network password (use for WPA, or use as key for WEP)
+
+#endif
+
+#define AT_BAUD_RATE 115200
+
+int blinkRate = 500;
+
+void setup() {
+  pinMode(LED_BUILTIN, OUTPUT);
+
+  Serial.begin(115200);
+  while (!Serial);
+
+  Serial1.begin(AT_BAUD_RATE);
+  WiFi.init(&Serial1);
+
+  // Cela peut prendre un certain temps pour que le module wifi soit prêt
+  // Voir 1 minute dans la documentation
+  if (WiFi.status() == WL_NO_MODULE) {
+    Serial.println();
+    Serial.println("La communication avec le module WiFi a échoué!");
+    // ne pas continuer
+    errorState(2, 1);
+  }
+
+  WiFi.disconnect();  // pour effacer le chemin. non persistant
+
+  WiFi.setPersistent();  // définir la connexion WiFi suivante comme persistante
+
+  WiFi.endAP();  // pour désactiver le démarrage automatique persistant AP par défaut au démarrage
+
+  // décommentez ces lignes pour une adresse IP statique persistante. définissez des adresses valides pour votre réseau
+  // Pour l'adresse du cégep, la plage est 172.22.0.0 où les derniers octets sont entre 1 et 254
+  // IPAddress ip(192, 168, 1, 9);
+  // IPAddress gw(192, 168, 1, 1);
+  // IPAddress nm(255, 255, 255, 0);
+  // WiFi.config(ip, gw, gw, nm);
 
   Serial.println();
-  Serial.println("Starting connection to server...");
-  // if you get a connection, report back via serial
-  if (client.connect(server, 80)) {
-    Serial.println("Connected to server");
-    // Make a HTTP request
-    client.println("GET /asciilogo.txt HTTP/1.1");
-    client.println("Host: arduino.cc");
-    client.println("Connection: close");
-    client.println();
-  }
-}
+  Serial.print("Tentative de connexion à SSID: ");
+  Serial.println(ssid);
 
-void loop()
-{
-  // if there are incoming bytes available
-  // from the server, read them and print them
-  while (client.available()) {
-    char c = client.read();
-    Serial.write(c);
-  }
+  int status = WiFi.begin(ssid, pass);
 
-  // if the server's disconnected, stop the client
-  if (!client.connected()) {
+  if (status == WL_CONNECTED) {
     Serial.println();
-    Serial.println("Disconnecting from server...");
-    client.stop();
-
-    // do nothing forevermore
-    while (true);
+    Serial.println("Connecté au réseau WiFi.");
+    printWifiStatus();
+  } else {
+    WiFi.disconnect();  // supprimer la connexion WiFi
+    Serial.println();
+    Serial.println("La connexion au réseau WiFi a échoué.");
+    blinkRate = 100;
   }
 }
 
+void loop() {
+  static unsigned long lastBlink = 0;
+  if (millis() - lastBlink >= blinkRate) {
+    lastBlink = millis();
+    digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));
+  }
+}
 
-void printWifiStatus()
-{
-  // print the SSID of the network you're attached to
+void printWifiStatus() {
+
+  // imprime le SSID du réseau auquel vous êtes connecté:
+  char ssid[33];
+  WiFi.SSID(ssid);
   Serial.print("SSID: ");
-  Serial.println(WiFi.SSID());
+  Serial.println(ssid);
 
-  // print your WiFi shield's IP address
+  // imprime le BSSID du réseau auquel vous êtes connecté:
+  uint8_t bssid[6];
+  WiFi.BSSID(bssid);
+  Serial.print("BSSID: ");
+  printMacAddress(bssid);
+
+  uint8_t mac[6];
+  WiFi.macAddress(mac);
+  Serial.print("MAC: ");
+  printMacAddress(mac);
+
+  // imprime l'adresse IP de votre carte:
   IPAddress ip = WiFi.localIP();
-  Serial.print("IP Address: ");
+  Serial.print("Adresse IP: ");
   Serial.println(ip);
 
-  // print the received signal strength
+  // imprime la force du signal reçu:
   long rssi = WiFi.RSSI();
-  Serial.print("Signal strength (RSSI):");
+  Serial.print("force du signal (RSSI):");
   Serial.print(rssi);
   Serial.println(" dBm");
+}
+
+// Imprime l'adresse MAC
+void printMacAddress(byte mac[]) {
+  for (int i = 5; i >= 0; i--) {
+    if (mac[i] < 16) {
+      Serial.print("0");
+    }
+    Serial.print(mac[i], HEX);
+    if (i > 0) {
+      Serial.print(":");
+    }
+  }
+  Serial.println();
+}
+
+// Fonction affichant un état d'erreur avec 2 paramètres pour code d'erreur
+// Cela permet de clignoter la DEL avec un code pour faciliter le débogage pour
+// l'utilisateur. On ne sort jamais de cette fonction.
+// Le programmeur doit définir la signification des codes d'erreur.
+//
+// Exemple de code d'erreur:
+//   errorState (2, 3) <-- (clignote 2 fois, pause, clignote 3 fois)
+void errorState(int codeA, int codeB) {
+  const int rate = 100;
+  const int pauseBetween = 500;
+  const int pauseAfter = 1000;
+
+  // On ne sort jamais de cette fonction
+  while (true) {
+    for (int i = 0; i < codeA; i++) {
+      digitalWrite(LED_BUILTIN, HIGH);
+      delay(rate);
+      digitalWrite(LED_BUILTIN, LOW);
+      delay(rate);
+    }
+    delay(pauseBetween);
+    for (int i = 0; i < codeB; i++) {
+      digitalWrite(LED_BUILTIN, HIGH);
+      delay(rate);
+      digitalWrite(LED_BUILTIN, LOW);
+      delay(rate);
+    }
+    delay(pauseAfter);
+
+    Serial.print("Erreur : ");
+    Serial.print(codeA);
+    Serial.print(".");
+    Serial.println(codeB);
+  }
 }
 
 ```
@@ -390,10 +518,12 @@ TODO : Ajouter les informations pour tester le module avec le terminal
 ---
 
 # Extra
+
 - Gabarit 3D à imprimer pour protéger les broches et n'exposer que GPIO0 et RST. 
 [Fichier STL](assets/esp-12f%20flashing%20frame.stl)
 
 ![Alt text](assets/esp8266_flashing_frame.jpg)
+
 ---
 
 # Références
