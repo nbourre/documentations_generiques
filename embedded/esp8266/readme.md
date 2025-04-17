@@ -1,7 +1,7 @@
 # Makerfabs ESP8266 WiFi Shield
 Ce document est une amélioration et un complément du document [ESP8266 WiFi Shield](https://ca.robotshop.com/products/esp8266-wifi-shield) (RB-Mkf-14) de RobotShop.
 
-![Alt text](esp8266-wifi-shield.webp)
+![Alt text](assets/esp8266-wifi-shield.webp)
 
 ## Table des matières
 - [Makerfabs ESP8266 WiFi Shield](#makerfabs-esp8266-wifi-shield)
@@ -513,7 +513,14 @@ python esptool.py --port COM3 write_flash -fs 2MB -fm dout 0x0 nouveauFirmware.b
 
 # Tester le module avec Arduino
 
-TODO : Ajouter les informations pour tester le module avec le terminal
+Étant donné que nous utilisons la librarie `WifiEspAt`, nous pouvons tester la compatilibilité du module avec l'exemple de projet `CheckFirmware` de la librairie. Ce projet se retrouve dans `Examples/WifiEspAt/Tools/CheckFirmware`. Sur le Mega, il faut changer le port de communication pour le port RX1/TX1.
+
+Si le module est compatible, vous devriez avoir un message comme celui-ci :
+
+```text
+AT firmware version 1.7.1.0
+AT firmware is OK for the WiFiEspAT library.
+```
 
 ---
 
