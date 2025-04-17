@@ -14,6 +14,7 @@ Ce document est une amélioration et un complément du document [ESP8266 WiFi Sh
   - [Code d'exemple](#code-dexemple)
 - [Mise à jour du firmware](#mise-à-jour-du-firmware)
 - [Connexion au module ESP8266](#connexion-au-module-esp8266)
+- [Connexion au module ESP01](#connexion-au-module-esp01)
 - [Mise à jour du firmware avec ESP8266 Download Tool v3.8.5](#mise-à-jour-du-firmware-avec-esp8266-download-tool-v385)
 - [Mise à jour du firmware avec esptool.py](#mise-à-jour-du-firmware-avec-esptoolpy)
   - [Installation de l'outil esptool.py](#installation-de-loutil-esptoolpy)
@@ -333,6 +334,8 @@ Disconnecting from server...
 
 Attention! Cette partie est très dangereuse. Si vous ne savez pas ce que vous faites, vous risquez de brûler votre module `ESP8266`. Il est donc fortement recommandé de sauvegarder le firmware actuel avant de le modifier.
 
+---
+
 # Connexion au module ESP8266
 Si vous avez un module qui n'a pas de port USB, vous devez utiliser un adaptateur USB-UART. Vous pouvez en trouver sur [Amazon](https://a.co/d/1gRKGrE).
 
@@ -354,6 +357,17 @@ Il faudra aussi brancher le port **GPIO0 sur GND** pour que le module entre en m
 ![Alt text](assets/ESP8266-ESP-12E-chip-pinout-gpio-pin.webp)
 
 ![Alt text](assets/branchement_gpio0.jpg)
+
+---
+
+# Connexion au module ESP01
+Si vous programmez un module de type ESP01, il faut utiliser un adaptateur USB-UART qui supporte le 3.3V. Il faut aussi relier les broches suivantes :
+
+![alt text](assets/Connecting-ESP8266-01-to-FTDI-Module.jpg)
+
+Le reste des commandes sont les mêmes que pour le module ESP8266.
+
+---
 
 # Mise à jour du firmware avec ESP8266 Download Tool v3.8.5
 [Source de l'article original](https://www.makerfabs.cc/article/esp8266-wifi-shield-firmware-upgrade-v1-0.html)
@@ -394,6 +408,8 @@ Il suffit de lancer l'application et de suivre les étapes suivantes :
         `is stub and send flash finish`
 
 Pour tester le module, vous n'avez qu'à suivre les étapes de la section [Configuration avec Arduino IDE](#configuration-avec-arduino-ide).
+
+---
 
 # Mise à jour du firmware avec esptool.py
 
