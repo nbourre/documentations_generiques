@@ -1,10 +1,10 @@
-# Makerfabs ESP8266 WiFi Shield
+# Makerfabs ESP8266 WiFi Shield et ESP01
 Ce document est une amélioration et un complément du document [ESP8266 WiFi Shield](https://ca.robotshop.com/products/esp8266-wifi-shield) (RB-Mkf-14) de RobotShop.
 
 ![Alt text](assets/esp8266-wifi-shield.webp)
 
 ## Table des matières
-- [Makerfabs ESP8266 WiFi Shield](#makerfabs-esp8266-wifi-shield)
+- [Makerfabs ESP8266 WiFi Shield et ESP01](#makerfabs-esp8266-wifi-shield-et-esp01)
   - [Table des matières](#table-des-matières)
 - [Firmware compatible pour le cours](#firmware-compatible-pour-le-cours)
 - [Configuration avec Arduino IDE](#configuration-avec-arduino-ide)
@@ -16,6 +16,7 @@ Ce document est une amélioration et un complément du document [ESP8266 WiFi Sh
 - [Connexion au module ESP8266](#connexion-au-module-esp8266)
 - [Connexion au module ESP01](#connexion-au-module-esp01)
 - [Mise à jour du firmware avec ESP8266 Download Tool v3.8.5](#mise-à-jour-du-firmware-avec-esp8266-download-tool-v385)
+- [Mise à jour du firmware avec flash\_download\_tool](#mise-à-jour-du-firmware-avec-flash_download_tool)
 - [Mise à jour du firmware avec esptool.py](#mise-à-jour-du-firmware-avec-esptoolpy)
   - [Installation de l'outil esptool.py](#installation-de-loutil-esptoolpy)
   - [Sauvegarde du firmware](#sauvegarde-du-firmware)
@@ -388,6 +389,7 @@ Il suffit de lancer l'application et de suivre les étapes suivantes :
 5. Toucher rapidement la broche `RST` avec le ground pour mettre le module en mode flash
 
 ![Alt text](assets/rst_pin.gif)
+
    On ne voit pas dans la vidéo, mais la DEL bleu du module s'allume très brièvement.
 6. S'assurer que rien n'est coché dans la liste des fichiers
 
@@ -408,6 +410,42 @@ Il suffit de lancer l'application et de suivre les étapes suivantes :
         `is stub and send flash finish`
 
 Pour tester le module, vous n'avez qu'à suivre les étapes de la section [Configuration avec Arduino IDE](#configuration-avec-arduino-ide).
+
+---
+
+# Mise à jour du firmware avec flash_download_tool
+
+L'outil `flash_download_tool` est un outil de mise à jour du firmware pour les modules ESP8266. Il est disponible sur le site officiel d'Espressif. Il suffit de télécharger l'outil et de le décompresser dans un dossier de votre choix.
+
+Il est disponible [ici](https://docs.espressif.com/projects/esp-test-tools/en/latest/esp8266/production_stage/tools/flash_download_tool.html).
+
+![alt text](assets/flash_download_tool_3.9.8_SPIDownload.png)
+
+Lors de la première exécution, il vous sera demandé de choisir la plateforme de votre module. Il faut choisir `ESP8266` et cliquer sur `OK`.
+
+![alt text](assets/flash_download_tool_3.9.8_tool_mode.png)
+
+Ensuite, vous serez redirigé vers l'interface principale de l'outil.
+
+![alt text](assets/flash_download_tool_3.9.8_SPIDownload.png)
+
+Dans le cas de la capture d'écran, certains fichiers ont déjà été ajoutés. À la première exécution, il n'y a pas de fichiers. Il faut donc ajouter les fichiers du firmware que vous avez téléchargé.
+
+Dans [ce fichier](assets/BAT_AT_V1.7.1.zip), il y a le firmware AT version 1.7.1. Il y a la version pour la puce 1MB et 4MB. Il faut choisir la version qui correspond à votre module.
+
+Pour connaître la taille de votre module, vous pouvez utiliser l'onglet `chipDumpInfo` de l'outil. Il vous donnera la taille de la mémoire flash de votre module.
+
+![alt text](assets/flash_download_tool_chip_info.gif)
+
+La dernière ligne de la capture d'écran montre la taille de la mémoire flash. Dans le cas présent, il s'agit d'un module de 1MB.
+
+Pour télécharger le firmware, il faut cliquer sur un des boutons `...` et choisir le fichier du firmware que vous avez téléchargé. Ensuite dans notre cas, mettre l'adresse de début à `0x0000` et cocher la case devant le fichier.
+
+Ensuite, il suffit de cliquer sur `Start` pour commencer le téléchargement du firmware. Cela peut prendre plusieurs minutes. Une fois terminé, vous devriez avoir le message `Finish` dans la fenêtre de l'outil.
+
+![alt text](assets/flash_download_tool_start.gif)
+
+
 
 ---
 
