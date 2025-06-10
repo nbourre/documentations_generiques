@@ -71,6 +71,10 @@ Ce document est une amélioration et un complément du document [ESP8266 WiFi Sh
 
 ## Branchement au RX1/TX1
 
+> Attention! Erreur d'étiquettage sur certains Arduinos chinois.
+>
+> - Si ça ne fonctionne plus avec un board Mega, il se peut que l'étiquette de RX1 et TX1 soit inversée. Valider l'information avec un second Arduino Mega.
+
 - Désactiver les cavaliers en les plaçant en parallèle (voir image ci-dessous).
 
 ![Alt text](assets/makerfabs_wifi_mega.jpg)
