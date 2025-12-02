@@ -25,6 +25,9 @@ chmod +x setup-godot-engine-scriptmodule.sh
 10. Aller dans le dossier `opt/retropie/emulators/godot-engine`
 11. Modifier les permissions du fichier `godot_4.3.x86_64` : `chmod +x godot_4.3.x86_64`
 
+## Nouvelle version
+S'il y a une nouvelle version de Godot, il faut mettre à jour les fichiers binaires dans le tag `https://github.com/nbourre/RetroPie-Godot-Engine-Emulator/releases/tag/v1.12.0` et déposer le fichier exécutable de Godot.
+
 # Installer le module d'exportation pour Linux-PC
 Editor -> Manage Export Templates -> Download -> Linux/X11
 
@@ -32,7 +35,7 @@ Editor -> Manage Export Templates -> Download -> Linux/X11
 1. Ouvrir l'outil d'exportation : Project -> Export
 2. Cliquer sur "Add..." et sélectionner "Linux/X11"
 3. Sélectionner l'architecture de votre système (32 ou 64 bits)
-4. Cliquer sur "Export Project" pour l'exécutable
+4. Cliquer sur "Export Project" pour l'exécutable de Godot
 5. Cliquer sur "Export PCK/ZIP" pour les ressources
 
 # Envoyer les fichiers sur Retropie
