@@ -36,7 +36,15 @@ Editor -> Manage Export Templates -> Download -> Linux/X11
 2. Cliquer sur "Add..." et sélectionner "Linux/X11"
 3. Sélectionner l'architecture de votre système (32 ou 64 bits)
 4. Cliquer sur "Export Project" pour l'exécutable de Godot
-5. Cliquer sur "Export PCK/ZIP" pour les ressources
+
+# Exporter le jeu sans l'exécuteur
+1. Cliquer sur "Export PCK/ZIP" pour les ressources
+
+S'il y a des fichiers supplémentaires qui ne sont pas des ressources Godot, il faudra les ajouter dans les filtres d'exportation.
+
+Par exemple, pour exporter des fichiers qui se retrouve dans le dossier `res://maps/`, il faut ajouter `maps/*` dans les filtres d'exportation.
+
+![alt text](assets/export_ressources.png)
 
 # Envoyer les fichiers sur Retropie
 1. Dans le dossier `roms/godot-engine`, créer un dossier pour votre jeu
