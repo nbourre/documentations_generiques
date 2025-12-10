@@ -38,7 +38,8 @@ Editor -> Manage Export Templates -> Download -> Linux/X11
 4. Cliquer sur "Export Project" pour l'exécutable de Godot
 
 # Exporter le jeu sans l'exécuteur
-1. Cliquer sur "Export PCK/ZIP" pour les ressources
+Même procédure que pour l'exécuteur, mais cette fois-ci :
+- Cliquer sur "Export PCK/ZIP" pour les ressources
 
 S'il y a des fichiers supplémentaires qui ne sont pas des ressources Godot, il faudra les ajouter dans les filtres d'exportation.
 
