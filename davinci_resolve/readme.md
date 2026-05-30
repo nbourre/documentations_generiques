@@ -11,7 +11,7 @@
   - [Faire un fade in/out](#faire-un-fade-inout)
   - [Faire une transition](#faire-une-transition)
   - [Ajouter un texte](#ajouter-un-texte)
-  - [Sélectionner les clips à droite du marqueur](#sélectionner-les-clips-à-droite-du-marqueur)
+  - [Touches raccourcis](#touches-raccourcis)
   - [Changer la vitesse d'une séquence](#changer-la-vitesse-dune-séquence)
 - [Références](#références)
 
@@ -66,14 +66,26 @@ Pour ajouter un texte rapide pour, par exemple, un correctif, on peut utiliser l
 2. Glisser le "Text" dans la timeline "Video 2"
 3. Modifier le texte dans le "Inspector" (Haut droit)
 
-## Sélectionner les clips à droite du marqueur
-- ALT + Y 
+## Touches raccourcis
+- Sélectionner les clips à droite du marqueur : ALT + Y
+- Aller à la fin ou début : flèche haut ou bas.
 
 ## Changer la vitesse d'une séquence
 1. Sélectionner la séquence
 2. Cliquer droit sur la séquence
 3. Sélectionner "Retime controls"
-4. Modifier le pourcentage de vitesse désiré
+4. Modifier le pourcentage de 
+
+## Réduire le bruit de fond
+1. Aller dans Audio
+2. Sélectionner la piste à réduire le bruit
+3. Glisser l'effet "Noise reduction"
+4. Positionner le curseur à un endroit où il n'y a que du bruit
+5. Dans la fenêtre, cliquer sur "Learn"
+6. Faire jouer la vidéo un certain temps
+7. Cliquer sur "Learn" conserver
+8. Donner un nom pour réutiliser l'apprentissage pour la même séquence.
+
 
 # Références
 - https://www.mnn.org/blog/create-reusable-lower-third-template-davinci-resolve
